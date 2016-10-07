@@ -17,9 +17,9 @@ configure :production do
 end
 
 # Quick test
-get '/' do
-erb :index
-end
+#get '/' do
+#erb :index
+#end
 
 # Test at <appname>.heroku.com
 

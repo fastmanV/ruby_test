@@ -15,8 +15,8 @@ require 'sinatra'
 
 #u = Message.new(:name => 'sas')
 #u.save
-#get '/' do
+get '/' do
 
- #  erb :index
-#end
+   erb :index
+end
 
