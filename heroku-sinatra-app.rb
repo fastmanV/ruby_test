@@ -17,7 +17,10 @@ configure :production do
 end
 
 # Quick test
-
+get '/' do
+  "Congradulations!
+   You're running a Sinatra application on Heroku!"
+end
 
 # Test at <appname>.heroku.com
 
