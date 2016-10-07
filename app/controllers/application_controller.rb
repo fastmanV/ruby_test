@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require 'active_record'
+#require 'active_record'
 
 
 
@@ -15,8 +15,8 @@ require 'active_record'
 
 #u = Message.new(:name => 'sas')
 #u.save
-get '/' do
+#get '/' do
 
-   erb :index
-end
+ #  erb :index
+#end
 
