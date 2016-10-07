@@ -1,8 +1,6 @@
 require 'rubygems'
 require 'sinatra'
 require 'active_record'
-require 'mysql2'
-require "sinatra/activerecord"
 
 
 
