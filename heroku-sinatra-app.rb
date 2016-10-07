@@ -7,7 +7,7 @@
 #
 require 'rubygems'
 require 'sinatra'
-
+set :database_file, "/home/www/sinatra/config/database.yml"
 configure :production do
   # Configure stuff here you'll want to
   # only be run at Heroku at boot
@@ -17,10 +17,7 @@ configure :production do
 end
 
 # Quick test
-get '/' do
-  "Congradulations!
-   You're running a Sinatra application on Heroku!"
-end
+
 
 # Test at <appname>.heroku.com
 
