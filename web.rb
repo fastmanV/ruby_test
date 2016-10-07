@@ -1,8 +1,8 @@
-require 'sinatra'
+#require 'sinatra'
+require "sinatra/activerecord"
+#set :database_file, "/home/www/ruby_test/config/database.yml"
 
-#set :database_file, "/home/www/sinatra/config/database.yml"
 
-
-get '/' do
-  "Hello, world"
-end
+#get '/' do
+#  "Hello, world"
+#end

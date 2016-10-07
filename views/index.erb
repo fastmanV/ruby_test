@@ -1,4 +1,6 @@
-
+<% @users.each do |post| %>
+  <h1><%= post.id %></h1>
+<% end %>
     <div class="container">
 		<div class="row">
 			<div class="panel panel-primary">
@@ -10,7 +12,7 @@
 						<div class="form-group">
 							<label class="control-label" for="signupName">text</label>
 
-							<textarea id="signupName" rows="4" cols="10" class="form-control">
+							<textarea id="signupName" rows="4" cols="10" class="form-control" name="name">
 At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
 </textarea>
 						
