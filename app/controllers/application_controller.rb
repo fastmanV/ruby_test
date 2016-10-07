@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-#require 'active_record'
+require 'active_record'
 
 
 
