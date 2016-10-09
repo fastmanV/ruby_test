@@ -18,14 +18,27 @@ end
 #u = Message.new(:name => 'sas')
 #u.save
 get '/' do
-@users = Message.all
+@msg = Message.all
    erb :index
 end
 
 
-post '/cast' do
-u = Message.new(:name => params[:name])
-u.save
-@users = Message.all
-  erb :index
+post '/msg_add' do
+safe_link = SecureRandom.hex[0,10]
+msg = Message.new(:text => params[:text], :url => safe_link)
+msg.save
+
+ content_type :json
+  { :url => "message/#{safe_link}" }.to_json
 end
+
+get '/message/:url' do
+  @msg = Message.where(url: params[:url])
+  erb :show
+end
+
+get '/delete_all' do
+ 'aaa'
+ Message.delete_all
+
+	end

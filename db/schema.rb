@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007175631) do
+ActiveRecord::Schema.define(version: 20161009060148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "messages", force: :cascade do |t|
-    t.string "name"
+    t.text     "text"
+    t.string   "max_visit"
+    t.string   "current_visit"
+    t.string   "del_timer"
+    t.datetime "created_at"
+    t.string   "url"
   end
 
 end

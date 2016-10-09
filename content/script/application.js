@@ -1,6 +1,14 @@
 $(document).ready(function(){
 
+    var clipboard = new Clipboard('.btn');
 
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
 
 //encryptedData = CryptoJS.AES.encrypt("test123", "123");
 //alert(encryptedData);
@@ -10,15 +18,16 @@ $(document).ready(function(){
 $("#msgsbm").submit(function(e)
 {
 	var formURL = $(this).attr("action");
-	var name = $('textarea[name="name"]').val();
+	var text = $('textarea[name="text"]').val();
+  //var password = $('input[name="password"]').val();
+ // encryptedData = CryptoJS.AES.encrypt(text, password);
 $.ajax({
    url: formURL,
    type: "POST",
    dataType: "json" ,
    //data: {_method: 'patch', user: { fullname: "Filip", phone: "9674041112" } },
-   data: {name: name},
+   data: {text: text},
    success: function(response) {
-    alert('ok');
    	$(".alert-success").show();
    	$("#safe_link").val(document.URL + response.url);
      //success: function(data, textStatus, jqXHR) {

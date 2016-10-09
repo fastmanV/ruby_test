@@ -1,18 +1,19 @@
-<% @users.each do |post| %>
+<% @msg.each do |post| %>
   <h1><%= post.id %></h1>
 <% end %>
+ <a href="/delete_all">empty all</a>
     <div class="container">
 		<div class="row">
 			<div class="panel panel-primary">
 				<div class="panel-body">
-					<form method="POST" action="/cast" role="form">
+					<form name="ajaxform" id="msgsbm" method="POST" action="/msg_add" role="form">
 						<div class="form-group">
 							<h2>Create Safe messages</h2>
 						</div>
 						<div class="form-group">
 							<label class="control-label" for="signupName">text</label>
 
-							<textarea id="signupName" rows="4" cols="10" class="form-control" name="name">
+							<textarea id="signupName" rows="4" cols="10" class="form-control" name="text">
 At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
 </textarea>
 						
@@ -21,7 +22,7 @@ At w3schools.com you will learn how to make a website. We offer free tutorials i
 	
 						<div class="form-group">
 							<label class="control-label" for="Crypt Password">Password</label>
-							<input id="signupPassword" type="password" maxlength="25" class="form-control" placeholder="at least 6 characters" length="40">
+							<input id="signupPassword" type="password" name="password" maxlength="25" class="form-control" placeholder="at least 6 characters" length="40">
 						</div>
 						<div class="form-group">
   <label for="sel1">Select list:</label>
@@ -38,6 +39,12 @@ At w3schools.com you will learn how to make a website. We offer free tutorials i
 						
 						
 					</form>
+					               <div class="alert alert-success" style='display: none'>
+  <strong>Success!</strong> Hear your link.
+
+               <input type="text" class="form-control" id="safe_link">
+                <button class="btn" data-clipboard-action="copy" data-clipboard-target="#safe_link">Copy</button>
+</div>
 				</div>
 			</div>
 		</div>
