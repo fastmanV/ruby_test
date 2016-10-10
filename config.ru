@@ -5,4 +5,5 @@ require './heroku-sinatra-app'
 #require 'active_record'
 require "sinatra/activerecord"
 Dir.glob('./app/{models,controllers}/*.rb').each { |file| require file }
+Dir.glob('./lib}/*.rb').each { |file| require file }
 run Sinatra::Application

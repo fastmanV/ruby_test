@@ -1,5 +1,55 @@
 
+<%= @msg[0].id%>
 <% @msg.each do |s| %>
-<%= s.text %>
-<%end %>
+<%= s.del_timer %>
+<%= s.max_visit %><br>
+<%= s.created_at %>
+curr = <%= s.current_visit %>
+<div class="panel panel-primary">
+      <div class="panel-heading">
+      	
 
+
+
+
+
+
+			
+				<div class="panel-body">
+<div class="form-group" style="width: 500px;">
+							<label class="control-label" for="Crypt Password">Enter password to decrypt your messages</label>
+							<input id="decryptPassword" type="password" name="password" maxlength="25" class="form-control" placeholder="at least 6 characters" length="40">
+						</div>
+						<button class="btn" onclick="decrypt('<%= s.text %>')">decrypt</button>
+						
+
+
+</div>
+
+
+
+
+
+
+      </div>
+      <div class="panel-body">
+
+      <p id="demo">Your message display heare</p></div>
+    </div>
+ 
+<%end %>
+<script type="text/javascript">
+	
+	  function decrypt(intValue){
+   try {
+  
+  var password = $('input[name="password"]').val();
+  str = CryptoJS.AES.decrypt(intValue, password).toString(CryptoJS.enc.Utf8);
+$("#demo").html(str);
+}
+catch(err) {
+  $("#demo").html('perhaps password not correct');
+}
+}
+
+</script>

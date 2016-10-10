@@ -5,3 +5,4 @@ gem 'sinatra', '1.3.1'
 gem "sinatra-activerecord"
 gem 'pg'
 gem "rake"
+gem "rufus-scheduler"

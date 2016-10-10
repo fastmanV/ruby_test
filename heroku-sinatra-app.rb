@@ -1,9 +1,4 @@
-# You'll need to require these if you
-# want to develop while running with ruby.
-# The config/rackup.ru requires these as well
-# for it's own reasons.
-#
-# $ ruby heroku-sinatra-app.rb
+
 #
 require 'rubygems'
 require 'sinatra'
@@ -17,17 +12,18 @@ configure :production do
   #       from ENV['DATABASE_URI'] (see /env route below)
 end
 
-# Quick test
-#get '/' do
-#erb :index
-#end
+require 'rufus-scheduler'
 
-# Test at <appname>.heroku.com
+scheduler = Rufus::Scheduler.new
 
-# You can see all your app specific information this way.
-# IMPORTANT! This is a very bad thing to do for a production
-# application with sensitive information
 
-# get '/env' do
-#   ENV.inspect
-# end
+scheduler.every '1m' do
+#Message.where(del_timer:).each do |id|
+
+Message.where.not('del_timer' => nil).each do |id|
+Message.where("created_at <= ?", Time.now - id.del_timer.to_i.minutes).delete_all
+#Message.delete(id.id)
+end
+#Message.delete.where('created_at >= ?', 1.minutes.ago)
+  # do something every 3 hours
+end
