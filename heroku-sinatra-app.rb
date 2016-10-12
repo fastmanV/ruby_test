@@ -3,7 +3,7 @@
 require 'rubygems'
 require 'sinatra'
 require "sinatra/activerecord"
-set :database_file, "/home/www/sinatra/config/database.yml"
+set :database_file, "config/database.yml"
 set :public_folder, Proc.new { File.join(File.dirname(__FILE__), 'content') }
 configure :production do
   # Configure stuff here you'll want to
