@@ -1,5 +1,8 @@
 
+
 $(document).ready(function(){
+
+
 
     var clipboard = new Clipboard('.btn');
 
@@ -27,13 +30,35 @@ $("#select_result").show();
 
 });
 
-//encryptedData = CryptoJS.AES.encrypt(text2, "123");
-//decryptedData = CryptoJS.AES.decrypt(encryptedData, "123");
-//originalData = decryptedData.toString(CryptoJS.enc.Utf8);
-//alert(originalData);
+
+$("#sel1").on('change', function(){
+  $("#signupSubmit").removeAttr('disabled');
+});
 
 $("#msgsbm").submit(function(e)
 {
+
+function checkval(val) {
+
+if (val.length < 3) {
+return false;
+}else {
+  return true;
+}
+
+}
+
+
+function checksel(val) {
+
+if (val != undefined && val != 0) {
+return true;
+}else {
+  return false;
+}
+
+}
+
 
 
 	var formURL = $(this).attr("action");
@@ -42,23 +67,28 @@ $("#msgsbm").submit(function(e)
   encryptedData = CryptoJS.AES.encrypt(text, password).toString();
   var visit_limit = $('#visit_limit').val();
   var deletetime = $('#deletetime').val();
+  console.log(deletetime + "fsdlkjdsfljksd");
 
-$.ajax({
-   url: formURL,
-   type: "POST",
-   dataType: "json" ,
-   //data: {_method: 'patch', user: { fullname: "Filip", phone: "9674041112" } },
-   data: {text: encryptedData, visit_limit: visit_limit, deletetime: deletetime},
-   success: function(response) {
-   	$(".alert-success").show();
-   	$("#safe_link").val(document.URL + response.url);
-     //success: function(data, textStatus, jqXHR) {
-    // alert(response.url); 
-      //$( "#my4" ).append(response);
-      //$(".edit_test").empty();
-      //$('#cont').html(data);
-   }
- });
+ //if ((checkval(text) && checkval(password)) && ((visit_limit.length == undefined) || (deletetime == undefined))  ) {
+if ((checkval(text) && checkval(password)) && (checksel(visit_limit) || checksel(deletetime) )  ) {
+
+ $.ajax({
+    url: formURL,
+    type: "POST",
+    dataType: "json" ,
+    //data: {_method: 'patch', user: { fullname: "Filip", phone: "9674041112" } },
+    data: {text: encryptedData, visit_limit: visit_limit, deletetime: deletetime},
+    success: function(response) {
+    	$(".alert-success").show();
+    	$("#safe_link").val(document.URL + response.url);
+    }
+  });
+} else {
+alert("Form has empty field");
+
+}
+
+
 e.preventDefault();
 });
 $("#ajaxform").submit();

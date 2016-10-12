@@ -6,3 +6,5 @@ gem "sinatra-activerecord"
 gem 'pg'
 gem "rake"
 gem "rufus-scheduler"
+gem 'rspec'
+gem "capybara"

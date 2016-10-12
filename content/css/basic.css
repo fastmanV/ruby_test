@@ -22,3 +22,9 @@ h2 {
 .left { float: left; }
 
 .right { float: right; }
+
+
+#notify_msg {
+min-height: 15%;
+
+}

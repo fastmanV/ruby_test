@@ -1,10 +1,7 @@
 
-<%= @msg[0].id%>
+
 <% @msg.each do |s| %>
-<%= s.del_timer %>
-<%= s.max_visit %><br>
-<%= s.created_at %>
-curr = <%= s.current_visit %>
+<%= s.text %>
 <div class="panel panel-primary">
       <div class="panel-heading">
       	
@@ -48,7 +45,8 @@ curr = <%= s.current_visit %>
 $("#demo").html(str);
 }
 catch(err) {
-  $("#demo").html('perhaps password not correct');
+
+  $("#demo").append('perhaps password not correct');
 }
 }
 

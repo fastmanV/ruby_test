@@ -2,6 +2,7 @@
 #
 require 'rubygems'
 require 'sinatra'
+require "sinatra/activerecord"
 set :database_file, "/home/www/sinatra/config/database.yml"
 set :public_folder, Proc.new { File.join(File.dirname(__FILE__), 'content') }
 configure :production do
@@ -26,4 +27,8 @@ Message.where("created_at <= ?", Time.now - id.del_timer.to_i.minutes).delete_al
 end
 #Message.delete.where('created_at >= ?', 1.minutes.ago)
   # do something every 3 hours
+end
+class YourApplication < Sinatra::Base
+Dir.glob('./app/{models,controllers}/*.rb').each { |file| require file }
+use Sinatra::Application
 end

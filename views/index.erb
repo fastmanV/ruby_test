@@ -1,8 +1,11 @@
-<% @msg.each do |post| %>
-  <h1><%= post.id %></h1>
-<% end %>
- <a href="/delete_all">empty all</a>
+<div id='notify_msg'> 
+ssssss
+
+</div>
+
     <div class="container">
+
+
 		<div class="row">
 			<div class="panel panel-primary">
 				<div class="panel-body">
@@ -14,7 +17,7 @@
 							<label class="control-label" for="signupName">text</label>
 
 							<textarea id="signupName" rows="4" cols="10" class="form-control" name="text">
-At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
+
 </textarea>
 						
 						</div>
@@ -25,10 +28,11 @@ At w3schools.com you will learn how to make a website. We offer free tutorials i
 							<input id="signupPassword" type="password" name="password" maxlength="25" class="form-control" placeholder="at least 6 characters" length="40">
 						</div>
 						<div class="form-group">
-  <label for="sel1">Select list:</label>
+  <label for="sel1">Destraction option:</label>
   <select class="form-control target" id="sel1">
-  <option value="1">destroy message after the first link visit</option>
-  <option value="2">destroy after 1 hour</option>
+  <option value="" disabled selected>Select your option</option>
+  <option value="1">destroy message after the number of visit</option>
+  <option value="2">destroy after number of hour</option>
 </select>
 
 </div>
@@ -40,9 +44,9 @@ At w3schools.com you will learn how to make a website. We offer free tutorials i
 						</div>
 
 						<div class="form-group">
-							<button id="signupSubmit" type="submit" class="btn btn-info btn-block">Create messages</button>
+							<button id="signupSubmit" type="submit" class="btn btn-info btn-block" disabled>Create messages</button>
 						</div>
-						<p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
+						
 						
 						
 					</form>
