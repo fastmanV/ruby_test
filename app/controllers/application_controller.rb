@@ -40,8 +40,3 @@ Message.delete(@msg[0].id)
   erb :show
 end
 
-get '/delete_all' do
- 'aaa'
- Message.delete_all
-
-	end

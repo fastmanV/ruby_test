@@ -6,7 +6,7 @@ $(".deleteOption").keypress(function (e) {
      //if the letter is not digit then display error and don't type anything
      if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         //display error message
-        $("#errmsg").html("Digits Only").show().fadeOut("slow");
+        //$("#errmsg").html("Digits Only").show().fadeOut("slow");
                return false;
     }
    });
@@ -65,17 +65,7 @@ $("#sel1").on('change', function(){
         },
         submitHandler: function (form) { // for demo
 
-
-
-
-$("#msgsbm").submit(function(e)
-{
-
-
-
-
-
-  var formURL = $(this).attr("action");
+  var formURL = $(form).attr("action");
   var text = $('textarea[name="text"]').val();
   var password = $('input[name="password"]').val();
   encryptedData = CryptoJS.AES.encrypt(text, password).toString();
@@ -102,16 +92,8 @@ $("#msgsbm").submit(function(e)
 //}
 
 
-e.preventDefault();
-});
-$("#ajaxform").submit();
-
-
-
-
-
-
-
+//form.preventDefault();
+//$("#ajaxform").submit();
         }
     });
 

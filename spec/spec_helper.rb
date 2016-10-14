@@ -11,7 +11,7 @@ Sinatra::Application
 end
 
 
-describe 'Test' do
+describe 'Unit Test' do
   include Rack::Test::Methods
   it "should load the home page" do
 
@@ -19,10 +19,19 @@ describe 'Test' do
 get '/'
 expect(last_response.body).to include("Create Safe messages")
   end
+end
 
 
+
+
+describe 'Int Test' do
+  include Rack::Test::Methods
+  it "should load the home page" do
+
+get '/'
+expect(last_response.body).to include("Create Safe messages")
+  end
   it 'shud add msg' do
-
 post '/msg_add', params = {
         :text => 'test',
         :visit_limit  => '1',
@@ -34,6 +43,4 @@ get "#{token["url"]}"
 expect(last_response).to be_ok
 expect(last_response.body).to include("Enter password to decrypt your messages")
   end
-
-
 end
