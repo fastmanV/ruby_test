@@ -2,6 +2,15 @@
 
 $(document).ready(function(){
 
+$(".deleteOption").keypress(function (e) {
+     //if the letter is not digit then display error and don't type anything
+     if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        //display error message
+        $("#errmsg").html("Digits Only").show().fadeOut("slow");
+               return false;
+    }
+   });
+
 
 
     var clipboard = new Clipboard('.btn');
@@ -21,7 +30,7 @@ $( ".target" ).change(function() {
 $('input[name="deleteOption"]').attr({placeholder: "enter visit limit", id: "visit_limit"});
 
   }else{
-$('input[name="deleteOption"]').attr({placeholder: "enter delete time", id: "deletetime"});
+$('input[name="deleteOption"]').attr({placeholder: "enter the time of delete", id: "deletetime"});
   }
 
 
@@ -35,42 +44,46 @@ $("#sel1").on('change', function(){
   $("#signupSubmit").removeAttr('disabled');
 });
 
+
+ $('#msgsbm').validate({ // initialize the plugin
+        rules: {
+            password: {
+                required: true,
+                minlength: 6
+                
+                //signupPassword: true
+            },
+            text: {
+                required: true,
+                minlength: 5
+            },
+            deleteOption: {
+              
+              digits: true,
+              required: true
+            }
+        },
+        submitHandler: function (form) { // for demo
+
+
+
+
 $("#msgsbm").submit(function(e)
 {
 
-function checkval(val) {
-
-if (val.length < 3) {
-return false;
-}else {
-  return true;
-}
-
-}
-
-
-function checksel(val) {
-
-if (val != undefined && val != 0) {
-return true;
-}else {
-  return false;
-}
-
-}
 
 
 
-	var formURL = $(this).attr("action");
-	var text = $('textarea[name="text"]').val();
+
+  var formURL = $(this).attr("action");
+  var text = $('textarea[name="text"]').val();
   var password = $('input[name="password"]').val();
   encryptedData = CryptoJS.AES.encrypt(text, password).toString();
   var visit_limit = $('#visit_limit').val();
   var deletetime = $('#deletetime').val();
-  console.log(deletetime + "fsdlkjdsfljksd");
 
  //if ((checkval(text) && checkval(password)) && ((visit_limit.length == undefined) || (deletetime == undefined))  ) {
-if ((checkval(text) && checkval(password)) && (checksel(visit_limit) || checksel(deletetime) )  ) {
+//if ((checktext(text) && checkpass(password)) && (checksel(visit_limit) || checksel(deletetime) )  ) {
 
  $.ajax({
     url: formURL,
@@ -79,17 +92,28 @@ if ((checkval(text) && checkval(password)) && (checksel(visit_limit) || checksel
     //data: {_method: 'patch', user: { fullname: "Filip", phone: "9674041112" } },
     data: {text: encryptedData, visit_limit: visit_limit, deletetime: deletetime},
     success: function(response) {
-    	$(".alert-success").show();
-    	$("#safe_link").val(document.URL + response.url);
+      $(".alert-success").show();
+      $("#safe_link").val(document.URL + response.url);
     }
   });
-} else {
-alert("Form has empty field");
+//} else {
+//alert("Form has empty field");
 
-}
+//}
 
 
 e.preventDefault();
 });
 $("#ajaxform").submit();
+
+
+
+
+
+
+
+        }
+    });
+
+
 	});
