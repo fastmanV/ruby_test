@@ -39,4 +39,3 @@ Message.delete(@msg[0].id)
 
   erb :show
 end
-
